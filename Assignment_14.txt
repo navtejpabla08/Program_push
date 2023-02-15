@@ -1,0 +1,129 @@
+Ans-1)
+
+public class program_practice{
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			String s = null;
+			System.out.println(s.length());
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+			System.out.println("A Null Pointer Exception occured: " + e.getMessage());
+		}
+		
+	}
+}
+
+
+Ans-2)
+
+public class program_practice{
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			int result = 5/0;
+		} catch (ArithmeticException e) {
+			// TODO: handle exception
+			System.out.println("An Arithmetic Exception occured: " + e.getMessage());
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("An Exception occured: " + e.getMessage());
+		}finally {
+			System.out.println("This block will alwys be executed.");
+		}
+		
+	}
+}
+
+-> In this example, the try block contains the code that may throw an ArithmeticException. The catch block that immediately follows it catches this exception
+ and handles it by printing an error message to the console. The next catch block catches all other exceptions that are not handled by the first catch block. 
+This catch block handles these exceptions by printing a generic error message to the console.
+The program also includes a finally block that is executed regardless of whether an exception is thrown or not. In this example, the finally block simply prints a 
+message to the console.
+
+
+
+
+Ans-3)
+Certain exception types, such as java.lang.Object and java.lang.Void, are not allowed to be thrown in Java.
+
+public class ExampleProgram {
+    public static void main(String[] args) {
+        try {
+            throw new Object(); // This line will cause a compile-time error
+        } catch (Object e) {
+            System.out.println("An Object exception occurred: " + e.getMessage());
+        }
+    }
+}
+
+-> In this example, the try block contains a line of code that attempts to throw an Object exception. However, when we try to compile this program, we get a 
+compile-time error that says "cannot instantiate the type Object".
+
+
+
+Ans-4)
+
+
+public class program_practice{
+	
+	public static void do_something() throws Exception{
+		try {
+			int result = 5/0;
+		} catch (ArithmeticException e) {
+			// TODO: handle exception
+			throw new Exception("An Error occured while doing something.", e);
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			do_something();
+		} 
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("An Exception occured: " + e.getMessage());
+		}
+		
+	}
+}
+
+-> In this example, the doSomething method attempts to perform a division by zero, which will result in an ArithmeticException. However, instead of handling this 
+exception, we catch it and re-throw it as a more general Exception. This allows the exception to be caught and handled by the calling code, which is the main method 
+in this case. In the main method, we catch the Exception that is thrown by the doSomething method and handle it by printing an error message to the console.
+
+
+Ans-5)
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class program_practice{
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			try {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("Enter number 1: ");
+				int x = sc.nextInt();
+				System.out.println("Enter number 2: ");
+				int y = sc.nextInt();
+				int result = x/y;
+				
+				System.out.println(""+result);
+			} catch (InputMismatchException e) {
+				// TODO: handle exception
+				System.out.println("java.util.InputMismatchException");
+			}
+		} 
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		
+	}
+}
